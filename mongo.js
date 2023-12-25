@@ -6,7 +6,8 @@ if (process.argv.length < 3) {
 }
 
 const password = process.argv[2];
-const url = `mongodb+srv://fullstack:${password}@cluster0.vx8ojri.mongodb.net/noteApp?retryWrites=true&w=majority`;
+// const url = `mongodb+srv://fullstack:${password}@cluster0.vx8ojri.mongodb.net/noteApp?retryWrites=true&w=majority`;
+const url = `mongodb+srv://fullstack:${password}@cluster0.vx8ojri.mongodb.net/testNoteApp?retryWrites=true&w=majority`;
 mongoose.set("strictQuery", false);
 mongoose.connect(url);
 
@@ -24,12 +25,12 @@ Note.find({}).then((result) => {
   mongoose.connection.close();
 });
 
-// const note = new Note({
-//   content: "JS is Easy",
-//   important: true,
-// });
+const note = new Note({
+  content: "Java is statically typed language",
+  important: true,
+});
 
-// note.save().then((result) => {
-//   console.log("note saved!");
-//   mongoose.connection.close();
-// });
+note.save().then((result) => {
+  console.log("note saved!");
+  mongoose.connection.close();
+});
